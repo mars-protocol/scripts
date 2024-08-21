@@ -53,6 +53,7 @@ async def send_alert():
     urls = {
         'OSMO CM': 'https://api.marsprotocol.io/v1/unhealthy_positions/osmosis/creditmanager',
         'OSMO RB': 'https://api.marsprotocol.io/v1/unhealthy_positions/osmosis/redbank',
+        'NTRN CM': 'https://api.marsprotocol.io/v1/unhealthy_positions/neutron/creditmanager',
         'NTRN RB': 'https://api.marsprotocol.io/v1/unhealthy_positions/neutron/redbank'
     }
     
