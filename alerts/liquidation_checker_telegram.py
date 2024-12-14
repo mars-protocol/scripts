@@ -4,6 +4,8 @@ import logging
 import requests
 from telegram import Bot
 
+HOST_URL = os.getenv('HOST_URL', 'https://api.marsprotocol.io')
+
 # Telegram bot token and channel ID
 BOT_TOKEN = os.getenv('BOT_TOKEN')
 CHANNEL_ID = os.getenv('CHANNEL_ID')
@@ -51,10 +53,10 @@ def fetch_and_filter_data(url, url_label, min_health_factor, max_health_factor, 
 async def send_alert():
     bot = Bot(token=BOT_TOKEN)
     urls = {
-        'OSMO CM': 'https://api.marsprotocol.io/v1/unhealthy_positions/osmosis/creditmanager',
-        'OSMO RB': 'https://api.marsprotocol.io/v1/unhealthy_positions/osmosis/redbank',
-        'NTRN CM': 'https://api.marsprotocol.io/v1/unhealthy_positions/neutron/creditmanager',
-        'NTRN RB': 'https://api.marsprotocol.io/v1/unhealthy_positions/neutron/redbank'
+        'OSMO CM': f'{HOST_URL}/v1/unhealthy_positions/osmosis/creditmanager',
+        'OSMO RB': f'{HOST_URL}/v1/unhealthy_positions/osmosis/redbank',
+        'NTRN CM': f'{HOST_URL}/v2/unhealthy_positions?chain=neutron&product=creditmanager',
+        'NTRN RB': f'{HOST_URL}/v1/unhealthy_positions/neutron/redbank'
     }
     
     # Aggregate messages
